@@ -46,62 +46,63 @@ function cities(){
     addEvents();
 };
 
-//function to add a city size column to the table
+//Adding the size of the city in the column
 function addColumns(cityPop){
-    //for each row, add a new column with the city size category
+		//Adding new new column for each row of new city size
     $('tr').each(function(i){
-    	//if the header row
+			//This is header row
     	if (i == 0){
-    		//add a header for City Size
+				//made change here, making header city size
     		$(this).append('<th>City Size</th>');
     	} else {
-    		//if not the header row, add a category
+				//Making a new row if it is not header
     		var citySize;
-    		//if the city population is smaller than 100K, it's a small city
+				//It is small size city if it is below 100000
     		if (cityPop[i-1].population < 100000){
     			citySize = 'Small';
-    		//if the city population is between 100K and 500K, medium city
+					//It is medium size city if it is in between 100000 and 500000
     		} else if (cityPop[i-1].population < 500000){
     			citySize = 'Medium';
-    		//if city population is above 500K, large city
+					//made change above, It is large if it is above 500000
     		} else {
     			citySize = 'Large';
     		};
-    		//append the cell to the row
+				//Made change here, adding vecll to the row
     		$(this).append('<td>' + citySize + '</td>');
     	};
     });
 };
 
-//function to add event listeners to the table
+//Adding different colors when mouse hovers over the words
 function addEvents(){
-	//when the user mouses over the table, change the text color to a random color
+	//made change here, when mouse hovers table, it changes the colors of the table
 	$('table').mouseover(function(){
-		//start of a CSS rgb() value
+		//let a new variable named color
 		var color = "rgb(";
-		//loop creates r, g, and b values
+		//a for loop looping over between 0 and 255 colors
 		for (var i=0; i<3; i++){
-			//random integer between 0 and 255
+			//random generating numbers from in between 0 and 255
 			var random = Math.round(Math.random() * 255);
-			//add the value
+			//made change here, add the valor to the variable color
 			color += random;
-			//commas to separate values
+			//seperate the color for each value
 			if (i<2){
 				color += ",";
-			//end of rgb() value
+				//ending after the last color with a ')'
 			} else {
 				color += ")";
-			};
 		};
-		//assign the text color
+	//made change here, changing the color of the text
+	};
+
 		$(this).css('color', color);
 	});
-	//click listener handler function
+//Adding a function which users can clic the table and pop up with a message
 	function clickme(){
-		//fire an alert when the table is clicked
+		//pop up with a message when the table is clicked
 		alert('Hey, you clicked me!');
 	};
-	//add click listener to table element
+	//adding the click element to the table
 	$('table').on('click', clickme);
 };
 
