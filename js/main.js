@@ -106,35 +106,36 @@ function addEvents(){
 	$('table').on('click', clickme);
 };
 
-//Module 3 AJAX function
+//function to request data from a target
 function jQueryAjax(){
 	//define a variable to hold the data
 	var mydata;
-	//basic jQuery ajax method
+	//getting data from a file
 	$.ajax("data/MegaCities.geojson", {
 		dataType: "json",
+		//get the data when the data successfully retrieved
 		success: function(response){
 			mydata = response;
 
-			//the data is usable here
+			//This shows it ran and shows on the console
 			console.log("This is the data: ", mydata);
 		}
 	});
 
-	//the data is not usable outside of the callback
+	//This runs when the data retrieved unsuccessfully
 	console.log("This is undefined: ", mydata);
 	//this calls the debugAjax function
 	debugAjax();
 };
 
-//Module 3 debugging
-//callback function
+
+//a callback function to print all the data on the website
 function debugCallback(mydata){
 	//add data to the web page
 	$('#mydiv').append('<br>GeoJSON data:<br>' + JSON.stringify(mydata));
 };
 
-//function to call data from server
+//function to retrieve the data
 function debugAjax(){
 	//request json data from server
 	$.ajax("data/MegaCities.geojson", {
