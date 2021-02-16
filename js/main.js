@@ -111,7 +111,7 @@ function jQueryAjax(){
 	//define a variable to hold the data
 	var mydata;
 	//basic jQuery ajax method
-	$.ajax("unit-1/data/MegaCities.geojson", {
+	$.ajax("data/MegaCities.geojson", {
 		dataType: "json",
 		success: function(response){
 			mydata = response;
@@ -137,7 +137,7 @@ function debugCallback(mydata){
 //function to call data from server
 function debugAjax(){
 	//request json data from server
-	$.ajax("unit-1/data/MegaCities.geojson", {
+	$.ajax("data/MegaCities.geojson", {
 		dataType: "json",
 		success: function(response){
 			//once data has been received, send to callback
